@@ -113,7 +113,7 @@ kubectl get pods -n nginx-ingress (Los pods se crearon en el namespace nginx-ing
 ```
 Se deberias observar la siguiente imagen similar en la implementacion.
 
-< "Agregar imagen de los pods nginx-ingress en estado running">
+![CHEESE!](imagesrepository/pod-nginxIC.PNG)
 
 - Una vez desplegado el NGINX, para dirigir el trafico hacia todas las aplicaciones desplegadas en diferentes namespaces o en 
 otras palabras `ruteo de cross namespace`, se necesita utilizar las herramientas de virtualserver y vitualserverroute. 
@@ -172,7 +172,7 @@ en el virtualserverroute desplegado anteriormente. En la seccion de ``routes`` s
 formato de: ``/nombre del namespace/nombre del pod``. Finalmente despliege los manifiestos y verifique que los virtualserver y 
 virtualserverroute se encunetren validos. 
 
-( Muestre la imagen de virtualserver y virtualserverroute se encuentren validos)
+![CHEESE!](imagesrepository/virtualserverroute.PNG)
 
 Observacion: Para habilitar el host del virtualserver usted necesita crear 1 registro de un dominio que posea en AWS, en este 
 caso se utilizo un dominio comprado de Amazon, pero usted puede utilizar dominios de diferentes proveedores. Este registro debe 
@@ -264,7 +264,7 @@ caso anterior vemos que un 10% se dirige a la version 1 y el 90% a la version 2.
 Finalmente, ingrese en el buscador la direccion del host usado mas el protocolo http o https: https://test.k8s.accessq.tk. Para 
 ingresar a las aplicaciones adicione los paths que se habilitaron : /billing, /customer, /product y /order. 
 
-(Agregar imagen de la pagina Nginx)
+![CHEESE!](imagesrepository/pagenginxdemo.PNG)
 
 
 Verifique el balanceo en todas las aplicaciones y el traffic splitting en la aplicacion billing ingresando al path: /billing. 
