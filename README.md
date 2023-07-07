@@ -98,7 +98,7 @@ spec:
 Luego verificamos que los deployments este corriendo y en sus respectivos namespaces, deberia obtener un resultado similar a 
 este: 
 
-(Aqui agregar imagen de todos los deployments corriendo -kubectl get deployments -A)
+![CHEESE!](imagesrepository/deployments.PNG)
 
 ## Despliegue del Nginx Ingress Controller
 
