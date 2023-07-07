@@ -1,0 +1,18 @@
+# Namespace para las aplicaciones billing
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: billing
+---
+# Namespace para las aplicaciones product
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: product
+---
+# Namespace para el virtualserver
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: accessq
+

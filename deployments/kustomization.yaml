@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+metadata:
+  name: app-kustomization
+resources:
+  - secret-server.yaml
+  - namespaces.yaml
+  - applicationsv1.yaml
+  - applicationsv2.yaml
+  - vsr.yaml
+  - vs.yaml

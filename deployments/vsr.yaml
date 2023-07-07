@@ -1,0 +1,47 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServerRoute
+metadata:
+  name: billing 
+  namespace: billing 
+spec:
+  host: appch02.k8s.accessq.tk 
+  upstreams:
+    - name: billing
+      service: billing-svc
+      port: 80
+    - name: billingv2
+      service: billing-svcv2
+      port: 80
+  subroutes:
+  - path: /billing 
+    splits: # Escenario del trafic splitting
+      - weight: 25
+        action:
+          pass: billing
+      - weight: 75
+        action:
+          pass: billingv2
+---
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServerRoute
+metadata:
+  name: product
+  namespace: product
+spec:
+  host: appch02.k8s.accessq.tk
+  upstreams:
+    - name: product
+      service: product-svc
+      port: 80
+    - name: productv2
+      service: product-svcv2
+      port: 80
+  subroutes:
+  - path: /product 
+    splits: #Escenario del trafic splitting
+      - weight: 75
+        action:
+          pass: product
+      - weight: 25
+        action:
+          pass: productv2

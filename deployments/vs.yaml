@@ -1,0 +1,16 @@
+apiVersion: k8s.nginx.org/v1
+kind: VirtualServer
+metadata:
+  name: accessq
+  namespace: accessq
+spec:
+  host: appch02.k8s.accessq.tk
+  tls:
+    secret: server-secret
+    redirect:
+      enable: true
+  routes:
+    - path: /billing
+      route: billing/billing
+    - path: /product
+      route: product/product

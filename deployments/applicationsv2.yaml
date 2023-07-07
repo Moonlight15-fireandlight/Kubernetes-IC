@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: billing-deployv2
+  namespace: billing
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: billingv2
+  template:
+    metadata:
+      labels:
+        app: billingv2
+    spec:
+      containers:
+        - name: billingv2
+          image: nginxdemos/nginx-hello
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: billing-svcv2
+  namespace: billing
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app: billingv2
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product-deployv2
+  namespace: product
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: productv2
+  template:
+    metadata:
+      labels:
+        app: productv2
+    spec:
+      containers:
+        - name: productv2
+          image: nginxdemos/nginx-hello
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-svcv2
+  namespace: product
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+      protocol: TCP
+      name: http
+  selector:
+    app: productv2
+
